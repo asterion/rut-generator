@@ -1,0 +1,9 @@
+{
+  "uuid": "rut-empresa@asterion",
+  "name": "RUT Empresa",
+  "description": "A button in the top panel that generates a random, valid Chilean company RUT for testing and copies it to the clipboard. The extension only writes to the clipboard; it never reads it.",
+  "version": 1,
+  "shell-version": [
+    "50"
+  ]
+}
