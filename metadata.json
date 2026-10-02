@@ -1,7 +1,8 @@
 {
   "uuid": "rut-empresa@asterion",
   "name": "RUT Empresa",
-  "description": "A button in the top panel that generates a random, valid Chilean company RUT for testing and copies it to the clipboard. The extension only writes to the clipboard; it never reads it.",
+  "description": "Two buttons in the top panel that generate a random, valid Chilean RUT for testing and copy it to the clipboard: one for a company and one for a person. The extension only writes to the clipboard; it never reads it.",
+  "gettext-domain": "rut-empresa@asterion",
   "version": 1,
   "shell-version": [
     "50"

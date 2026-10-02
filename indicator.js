@@ -12,21 +12,21 @@ import St from 'gi://St';
 
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 
-import {randomCompanyRut} from './rut.js';
-
 const COPIED_TIMEOUT_MS = 1000;
 
+// A panel button that copies a RUT made by generateRut() to the clipboard on each click
 export const RutIndicator = GObject.registerClass(
 class RutIndicator extends PanelMenu.Button {
-    _init(name, iconsDir) {
+    _init(name, iconFile, generateRut) {
         super._init(0.0, name, true);
 
-        this._companyIcon = new Gio.FileIcon({file: iconsDir.get_child('company-symbolic.svg')});
+        this._generateRut = generateRut;
+        this._buttonIcon = new Gio.FileIcon({file: iconFile});
         this._copiedIcon = new Gio.ThemedIcon({name: 'object-select-symbolic'});
         this._timeoutId = 0;
 
         this._icon = new St.Icon({
-            gicon: this._companyIcon,
+            gicon: this._buttonIcon,
             style_class: 'system-status-icon',
         });
         this.add_child(this._icon);
@@ -41,7 +41,7 @@ class RutIndicator extends PanelMenu.Button {
     }
 
     _copyRut() {
-        St.Clipboard.get_default().set_text(St.ClipboardType.CLIPBOARD, randomCompanyRut());
+        St.Clipboard.get_default().set_text(St.ClipboardType.CLIPBOARD, this._generateRut());
 
         // Show a check mark for a moment to confirm the copy
         this._icon.gicon = this._copiedIcon;
@@ -49,7 +49,7 @@ class RutIndicator extends PanelMenu.Button {
             GLib.Source.remove(this._timeoutId);
         this._timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, COPIED_TIMEOUT_MS, () => {
             this._timeoutId = 0;
-            this._icon.gicon = this._companyIcon;
+            this._icon.gicon = this._buttonIcon;
             return GLib.SOURCE_REMOVE;
         });
     }
@@ -60,8 +60,9 @@ class RutIndicator extends PanelMenu.Button {
         this._timeoutId = 0;
 
         this._icon = null;
-        this._companyIcon = null;
+        this._buttonIcon = null;
         this._copiedIcon = null;
+        this._generateRut = null;
 
         super.destroy();
     }
