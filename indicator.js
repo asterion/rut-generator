@@ -15,7 +15,6 @@ import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 
 import {RutMenu} from './menu.js';
 import {Kind, formatRut, randomRut} from './rut.js';
-import {Tooltip} from './tooltip.js';
 
 const COPIED_TIMEOUT_MS = 1400;
 
@@ -29,19 +28,18 @@ class RutIndicator extends PanelMenu.Button {
 
         this._settings = settings;
         this._copiedIcon = new Gio.FileIcon({file: iconsDir.get_child('check-green.svg')});
-        this._tooltips = [];
         this._timeoutId = 0;
 
         const capsule = new St.BoxLayout({style_class: 'rut-capsule', y_align: Clutter.ActorAlign.CENTER});
         this.add_child(capsule);
 
         this._kindButtons = new Map();
-        for (const [kind, file, tooltip] of [
+        for (const [kind, file, name] of [
             [Kind.COMPANY, 'company-symbolic.svg', _('Generate and copy a company RUT')],
             [Kind.PERSON, 'person-symbolic.svg', _('Generate and copy a person RUT')],
         ]) {
             const icon = new Gio.FileIcon({file: iconsDir.get_child(file)});
-            const button = this._addButton(capsule, icon, tooltip, () => this._generate(kind));
+            const button = this._addButton(capsule, icon, name, () => this._generate(kind));
             this._kindButtons.set(kind, {button, icon});
         }
 
@@ -55,22 +53,17 @@ class RutIndicator extends PanelMenu.Button {
             (_menu, open) => (this._menuButton.checked = open), this);
     }
 
-    _addButton(capsule, gicon, tooltip, action) {
+    _addButton(capsule, gicon, name, action) {
         const button = new St.Button({
             style_class: 'rut-button',
             child: new St.Icon({gicon, style_class: 'rut-button-icon'}),
-            accessible_name: tooltip,
+            // Read by screen readers; the panel shows no tooltips
+            accessible_name: name,
             can_focus: true,
             track_hover: true,
         });
+        button.connect('clicked', action);
         capsule.add_child(button);
-
-        const buttonTooltip = new Tooltip(button, tooltip);
-        this._tooltips.push(buttonTooltip);
-        button.connect('clicked', () => {
-            buttonTooltip.hide();
-            action();
-        });
         return button;
     }
 
@@ -103,10 +96,8 @@ class RutIndicator extends PanelMenu.Button {
 
         this._rutMenu.menu.disconnectObject(this);
         this._rutMenu.destroy();
-        this._tooltips.forEach(tooltip => tooltip.destroy());
 
         this._rutMenu = null;
-        this._tooltips = null;
         this._kindButtons = null;
         this._menuButton = null;
         this._copiedIcon = null;

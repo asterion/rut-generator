@@ -17,9 +17,9 @@ The extension adds a small capsule to the top panel with three buttons:
 | Person | Generates and copies a **person** RUT, between 1.000.000 and 16.999.999. |
 | Arrow | Opens the menu with the format and the history. |
 
-| Hover a button to see what it does | The button shows a check mark once the RUT is copied |
-|---|---|
-| ![Tooltip under the person button](examples/example_003.png) | ![Green check mark on the person button](examples/example_002.png) |
+Once the RUT is copied, the button shows a green check mark for a moment:
+
+![Green check mark on the person button](examples/example_002.png)
 
 ### Format
 

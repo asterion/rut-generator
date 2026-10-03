@@ -24,7 +24,7 @@ pot:
 # Build the zip for extensions.gnome.org (compiles the schema and .po files itself)
 pack:
 	gnome-extensions pack --force --podir=po \
-		--extra-source=indicator.js --extra-source=menu.js --extra-source=tooltip.js --extra-source=rut.js \
+		--extra-source=indicator.js --extra-source=menu.js --extra-source=rut.js \
 		--extra-source=icons --extra-source=LICENSE .
 
 clean:

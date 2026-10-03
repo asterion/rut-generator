@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rut-generator@asterion\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-02 21:19-0300\n"
+"POT-Creation-Date: 2026-10-02 21:25-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: indicator.js:40
+#: indicator.js:38
 msgid "Generate and copy a company RUT"
 msgstr ""
 
-#: indicator.js:41
+#: indicator.js:39
 msgid "Generate and copy a person RUT"
 msgstr ""
 
-#: indicator.js:50
+#: indicator.js:48
 msgid "Format and history"
 msgstr ""
 
