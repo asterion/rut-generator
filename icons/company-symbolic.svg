@@ -1,4 +1,65 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-  <!-- Office building: the windows and the door are holes cut out of the body -->
-  <path fill="#2e3436" fill-rule="evenodd" d="M3 1h10v13h2v1H1v-1h2ZM5 3v2h2V3Zm4 0v2h2V3ZM5 6.5v2h2v-2Zm4 0v2h2v-2ZM7 10.5V14h2v-3.5Z"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+  <!-- building-2 from Lucide (https://lucide.dev, ISC license), strokes converted to fills -->
+  <g fill="#2e3436">
+    <path d="M7.375 22 L7.375 4 L4.625 4 L4.625 22 Z"/>
+    <circle cx="6" cy="22" r="1.375"/>
+    <circle cx="6" cy="4" r="1.375"/>
+    <path d="M4.625 4 A3.375 3.375 0 0 1 8 0.625 L8 3.375 A0.625 0.625 0 0 0 7.375 4 Z"/>
+    <circle cx="6" cy="4" r="1.375"/>
+    <circle cx="8" cy="2" r="1.375"/>
+    <path d="M8 3.375 L16 3.375 L16 0.625 L8 0.625 Z"/>
+    <circle cx="8" cy="2" r="1.375"/>
+    <circle cx="16" cy="2" r="1.375"/>
+    <path d="M16 0.625 A3.375 3.375 0 0 1 19.375 4 L16.625 4 A0.625 0.625 0 0 0 16 3.375 Z"/>
+    <circle cx="16" cy="2" r="1.375"/>
+    <circle cx="18" cy="4" r="1.375"/>
+    <path d="M16.625 4 L16.625 22 L19.375 22 L19.375 4 Z"/>
+    <circle cx="18" cy="4" r="1.375"/>
+    <circle cx="18" cy="22" r="1.375"/>
+    <path d="M18 20.625 L6 20.625 L6 23.375 L18 23.375 Z"/>
+    <circle cx="18" cy="22" r="1.375"/>
+    <circle cx="6" cy="22" r="1.375"/>
+    <path d="M6 10.625 L4 10.625 L4 13.375 L6 13.375 Z"/>
+    <circle cx="6" cy="12" r="1.375"/>
+    <circle cx="4" cy="12" r="1.375"/>
+    <path d="M0.625 14 A3.375 3.375 0 0 1 4 10.625 L4 13.375 A0.625 0.625 0 0 0 3.375 14 Z"/>
+    <circle cx="2" cy="14" r="1.375"/>
+    <circle cx="4" cy="12" r="1.375"/>
+    <path d="M0.625 14 L0.625 20 L3.375 20 L3.375 14 Z"/>
+    <circle cx="2" cy="14" r="1.375"/>
+    <circle cx="2" cy="20" r="1.375"/>
+    <path d="M4 23.375 A3.375 3.375 0 0 1 0.625 20 L3.375 20 A0.625 0.625 0 0 0 4 20.625 Z"/>
+    <circle cx="4" cy="22" r="1.375"/>
+    <circle cx="2" cy="20" r="1.375"/>
+    <path d="M4 23.375 L6 23.375 L6 20.625 L4 20.625 Z"/>
+    <circle cx="4" cy="22" r="1.375"/>
+    <circle cx="6" cy="22" r="1.375"/>
+    <path d="M18 10.375 L20 10.375 L20 7.625 L18 7.625 Z"/>
+    <circle cx="18" cy="9" r="1.375"/>
+    <circle cx="20" cy="9" r="1.375"/>
+    <path d="M20 7.625 A3.375 3.375 0 0 1 23.375 11 L20.625 11 A0.625 0.625 0 0 0 20 10.375 Z"/>
+    <circle cx="20" cy="9" r="1.375"/>
+    <circle cx="22" cy="11" r="1.375"/>
+    <path d="M20.625 11 L20.625 20 L23.375 20 L23.375 11 Z"/>
+    <circle cx="22" cy="11" r="1.375"/>
+    <circle cx="22" cy="20" r="1.375"/>
+    <path d="M23.375 20 A3.375 3.375 0 0 1 20 23.375 L20 20.625 A0.625 0.625 0 0 0 20.625 20 Z"/>
+    <circle cx="22" cy="20" r="1.375"/>
+    <circle cx="20" cy="22" r="1.375"/>
+    <path d="M20 20.625 L18 20.625 L18 23.375 L20 23.375 Z"/>
+    <circle cx="20" cy="22" r="1.375"/>
+    <circle cx="18" cy="22" r="1.375"/>
+    <path d="M10 7.375 L14 7.375 L14 4.625 L10 4.625 Z"/>
+    <circle cx="10" cy="6" r="1.375"/>
+    <circle cx="14" cy="6" r="1.375"/>
+    <path d="M10 11.375 L14 11.375 L14 8.625 L10 8.625 Z"/>
+    <circle cx="10" cy="10" r="1.375"/>
+    <circle cx="14" cy="10" r="1.375"/>
+    <path d="M10 15.375 L14 15.375 L14 12.625 L10 12.625 Z"/>
+    <circle cx="10" cy="14" r="1.375"/>
+    <circle cx="14" cy="14" r="1.375"/>
+    <path d="M10 19.375 L14 19.375 L14 16.625 L10 16.625 Z"/>
+    <circle cx="10" cy="18" r="1.375"/>
+    <circle cx="14" cy="18" r="1.375"/>
+  </g>
 </svg>

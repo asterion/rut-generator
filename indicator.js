@@ -10,48 +10,90 @@ import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import St from 'gi://St';
 
+import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 
-const COPIED_TIMEOUT_MS = 1000;
+import {RutMenu} from './menu.js';
+import {Kind, formatRut, randomRut} from './rut.js';
+import {Tooltip} from './tooltip.js';
 
-// A panel button that copies a RUT made by generateRut() to the clipboard on each click
+const COPIED_TIMEOUT_MS = 1400;
+
+// A capsule in the panel with three buttons: company RUT, person RUT and the format and history menu
 export const RutIndicator = GObject.registerClass(
 class RutIndicator extends PanelMenu.Button {
-    _init(name, iconFile, generateRut) {
+    _init(name, settings, iconsDir) {
+        // No built-in menu: it would open on any click, and only the chevron must open it
         super._init(0.0, name, true);
+        this.add_style_class_name('rut-indicator');
 
-        this._generateRut = generateRut;
-        this._buttonIcon = new Gio.FileIcon({file: iconFile});
-        this._copiedIcon = new Gio.ThemedIcon({name: 'object-select-symbolic'});
+        this._settings = settings;
+        this._copiedIcon = new Gio.FileIcon({file: iconsDir.get_child('check-green.svg')});
+        this._tooltips = [];
         this._timeoutId = 0;
 
-        this._icon = new St.Icon({
-            gicon: this._buttonIcon,
-            style_class: 'system-status-icon',
+        const capsule = new St.BoxLayout({style_class: 'rut-capsule', y_align: Clutter.ActorAlign.CENTER});
+        this.add_child(capsule);
+
+        this._kindButtons = new Map();
+        for (const [kind, file, tooltip] of [
+            [Kind.COMPANY, 'company-symbolic.svg', _('Generate and copy a company RUT')],
+            [Kind.PERSON, 'person-symbolic.svg', _('Generate and copy a person RUT')],
+        ]) {
+            const icon = new Gio.FileIcon({file: iconsDir.get_child(file)});
+            const button = this._addButton(capsule, icon, tooltip, () => this._generate(kind));
+            this._kindButtons.set(kind, {button, icon});
+        }
+
+        this._menuButton = this._addButton(capsule,
+            new Gio.FileIcon({file: iconsDir.get_child('chevron-down-symbolic.svg')}),
+            _('Format and history'), () => this._rutMenu.toggle());
+        this._menuButton.add_style_class_name('rut-menu-button');
+
+        this._rutMenu = new RutMenu(this, settings, this._copiedIcon);
+        this._rutMenu.menu.connectObject('open-state-changed',
+            (_menu, open) => (this._menuButton.checked = open), this);
+    }
+
+    _addButton(capsule, gicon, tooltip, action) {
+        const button = new St.Button({
+            style_class: 'rut-button',
+            child: new St.Icon({gicon, style_class: 'rut-button-icon'}),
+            accessible_name: tooltip,
+            can_focus: true,
+            track_hover: true,
         });
-        this.add_child(this._icon);
+        capsule.add_child(button);
+
+        const buttonTooltip = new Tooltip(button, tooltip);
+        this._tooltips.push(buttonTooltip);
+        button.connect('clicked', () => {
+            buttonTooltip.hide();
+            action();
+        });
+        return button;
     }
 
-    vfunc_event(event) {
-        const type = event.type();
-        if (type === Clutter.EventType.BUTTON_PRESS || type === Clutter.EventType.TOUCH_BEGIN)
-            this._copyRut();
+    _generate(kind) {
+        const rut = randomRut(kind);
+        const text = formatRut(rut.number, rut.digit, this._settings.get_string('rut-format'));
+        St.Clipboard.get_default().set_text(St.ClipboardType.CLIPBOARD, text);
+        this._rutMenu.add(rut);
 
-        return Clutter.EVENT_PROPAGATE;
-    }
-
-    _copyRut() {
-        St.Clipboard.get_default().set_text(St.ClipboardType.CLIPBOARD, this._generateRut());
-
-        // Show a check mark for a moment to confirm the copy
-        this._icon.gicon = this._copiedIcon;
+        // Show the green check mark on the pressed button for a moment; pressing again restarts it
+        this._setFlash(kind);
         if (this._timeoutId)
             GLib.Source.remove(this._timeoutId);
         this._timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, COPIED_TIMEOUT_MS, () => {
             this._timeoutId = 0;
-            this._icon.gicon = this._buttonIcon;
+            this._setFlash(null);
             return GLib.SOURCE_REMOVE;
         });
+    }
+
+    _setFlash(kind) {
+        for (const [buttonKind, {button, icon}] of this._kindButtons)
+            button.child.gicon = buttonKind === kind ? this._copiedIcon : icon;
     }
 
     destroy() {
@@ -59,10 +101,16 @@ class RutIndicator extends PanelMenu.Button {
             GLib.Source.remove(this._timeoutId);
         this._timeoutId = 0;
 
-        this._icon = null;
-        this._buttonIcon = null;
+        this._rutMenu.menu.disconnectObject(this);
+        this._rutMenu.destroy();
+        this._tooltips.forEach(tooltip => tooltip.destroy());
+
+        this._rutMenu = null;
+        this._tooltips = null;
+        this._kindButtons = null;
+        this._menuButton = null;
         this._copiedIcon = null;
-        this._generateRut = null;
+        this._settings = null;
 
         super.destroy();
     }

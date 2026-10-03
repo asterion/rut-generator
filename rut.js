@@ -4,12 +4,17 @@
 // Do NOT upload to extensions.gnome.org (EGO) unless you understand JavaScript
 // and can maintain this code.
 
-// Chilean companies (legal entities) get RUT numbers in this range
-const MIN_COMPANY_RUT = 50000000;
-const MAX_COMPANY_RUT = 99999999;
-// Range used for people: never below 1.000.000 nor above 16.999.999
-const MIN_PERSON_RUT = 1000000;
-const MAX_PERSON_RUT = 16999999;
+export const Kind = {
+    COMPANY: 'company',
+    PERSON: 'person',
+};
+
+// Companies (legal entities) use 50.000.000 to 99.999.999.
+// People: never below 1.000.000 nor above 16.999.999.
+const RANGES = {
+    [Kind.COMPANY]: [50000000, 99999999],
+    [Kind.PERSON]: [1000000, 16999999],
+};
 
 /**
  * Check digit of a RUT number, using the modulo 11 algorithm.
@@ -32,31 +37,30 @@ export function checkDigit(number) {
 }
 
 /**
- * Random valid RUT with its number between min and max, formatted like "76543210-K".
+ * Random valid RUT of the given kind. The number and the check digit are kept apart,
+ * so the RUT can be formatted again when the format changes.
  *
- * @param {number} min - lowest RUT number
- * @param {number} max - highest RUT number
- * @returns {string} the formatted RUT
+ * @param {string} kind - a Kind value
+ * @returns {{kind: string, number: number, digit: string}} the RUT
  */
-function randomRut(min, max) {
+export function randomRut(kind) {
+    const [min, max] = RANGES[kind];
     const number = min + Math.floor(Math.random() * (max - min + 1));
-    return `${number}-${checkDigit(number)}`;
+    return {kind, number, digit: checkDigit(number)};
 }
 
 /**
- * Random valid company RUT, like "76543210-K".
+ * Format a RUT as "12.345.678-5" (dots), "12345678-5" (dash) or "123456785" (plain).
  *
+ * @param {number} number - RUT number
+ * @param {string} digit - check digit
+ * @param {string} format - 'dots', 'dash' or 'plain'
  * @returns {string} the formatted RUT
  */
-export function randomCompanyRut() {
-    return randomRut(MIN_COMPANY_RUT, MAX_COMPANY_RUT);
-}
-
-/**
- * Random valid person RUT, like "12345678-5".
- *
- * @returns {string} the formatted RUT
- */
-export function randomPersonRut() {
-    return randomRut(MIN_PERSON_RUT, MAX_PERSON_RUT);
+export function formatRut(number, digit, format) {
+    if (format === 'plain')
+        return `${number}${digit}`;
+    if (format === 'dash')
+        return `${number}-${digit}`;
+    return `${String(number).replace(/\B(?=(\d{3})+$)/g, '.')}-${digit}`;
 }

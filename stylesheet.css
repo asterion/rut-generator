@@ -1,0 +1,68 @@
+/* RUT Empresa: a capsule with three buttons in the panel, and its drop-down menu */
+
+/* The capsule's own buttons show hover and press, so the panel button does not */
+#panel .panel-button.rut-indicator,
+#panel .panel-button.rut-indicator:hover,
+#panel .panel-button.rut-indicator:focus,
+#panel .panel-button.rut-indicator:active {
+    box-shadow: none;
+}
+
+.rut-capsule {
+    height: 24px;
+    padding: 0 2px;
+    spacing: 2px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.rut-button {
+    width: 32px;
+    height: 22px;
+    border-radius: 999px;
+}
+
+.rut-button.rut-menu-button {
+    width: 20px;
+}
+
+.rut-button:hover,
+.rut-button:focus {
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+.rut-button:active,
+.rut-button:checked {
+    background-color: rgba(255, 255, 255, 0.24);
+}
+
+.rut-button-icon {
+    icon-size: 16px;
+}
+
+.rut-menu-button .rut-button-icon {
+    icon-size: 12px;
+}
+
+.rut-menu {
+    min-width: 300px;
+}
+
+.rut-menu-header {
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+/* Tabular figures keep the RUTs aligned */
+.rut-menu-number {
+    font-feature-settings: "tnum";
+}
+
+.rut-history-kind {
+    width: 42px;
+    font-size: 0.85em;
+}
+
+.rut-history-check {
+    icon-size: 14px;
+}

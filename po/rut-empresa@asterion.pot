@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rut-empresa@asterion\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-02 20:22-0300\n"
+"POT-Creation-Date: 2026-10-02 20:58-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,50 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Translators: accessible name of the company button, read by screen readers
-#: extension.js:21
-msgid "Copy a random company RUT"
+#: indicator.js:40
+msgid "Generate and copy a company RUT"
 msgstr ""
 
-#. Translators: accessible name of the person button, read by screen readers
-#: extension.js:24
-msgid "Copy a random person RUT"
+#: indicator.js:41
+msgid "Generate and copy a person RUT"
+msgstr ""
+
+#: indicator.js:50
+msgid "Format and history"
+msgstr ""
+
+#: menu.js:67
+msgid "Format"
+msgstr ""
+
+#: menu.js:70
+msgid "With dots and dash"
+msgstr ""
+
+#: menu.js:71
+msgid "Dash only"
+msgstr ""
+
+#: menu.js:72
+msgid "No dots or dash"
+msgstr ""
+
+#: menu.js:82
+msgid "History"
+msgstr ""
+
+#: menu.js:93
+msgid "Clear history"
+msgstr ""
+
+#: menu.js:138
+msgid "No RUTs generated"
+msgstr ""
+
+#: menu.js:150
+msgid "Company"
+msgstr ""
+
+#: menu.js:150
+msgid "Person"
 msgstr ""

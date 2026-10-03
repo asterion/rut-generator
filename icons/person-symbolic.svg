@@ -1,7 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-  <!-- Person: head and shoulders, solid like the company building -->
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+  <!-- user-round from Lucide (https://lucide.dev, ISC license), strokes converted to fills -->
   <g fill="#2e3436">
-    <circle cx="8" cy="4.5" r="3.5"/>
-    <path d="M1.5 15v-1.5C1.5 10.5 4 9 8 9s6.5 1.5 6.5 4.5V15Z"/>
+    <path fill-rule="evenodd" d="M5.625 8 a6.375 6.375 0 1 0 12.75 0 a6.375 6.375 0 1 0 -12.75 0 Z M8.375 8 a3.625 3.625 0 1 0 7.25 0 a3.625 3.625 0 1 0 -7.25 0 Z"/>
+    <path d="M2.625 21 A9.375 9.375 0 0 1 21.375 21 L18.625 21 A6.625 6.625 0 0 0 5.375 21 Z"/>
+    <circle cx="4" cy="21" r="1.375"/>
+    <circle cx="20" cy="21" r="1.375"/>
   </g>
 </svg>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.rut-empresa" path="/org/gnome/shell/extensions/rut-empresa/">
+    <key name="rut-format" type="s">
+      <choices>
+        <choice value="dots"/>
+        <choice value="dash"/>
+        <choice value="plain"/>
+      </choices>
+      <default>'dots'</default>
+      <summary>RUT format</summary>
+      <description>"dots": 12.345.678-5, "dash": 12345678-5, "plain": 123456785.</description>
+    </key>
+    <key name="history-limit" type="i">
+      <range min="3" max="20"/>
+      <default>8</default>
+      <summary>History size</summary>
+      <description>How many generated RUTs the menu keeps.</description>
+    </key>
+  </schema>
+</schemalist>

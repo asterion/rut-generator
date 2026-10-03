@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+  <!-- chevron-down from Lucide (https://lucide.dev, ISC license), strokes converted to fills -->
+  <g fill="#2e3436">
+    <path d="M4.939 10.061 L10.939 16.061 L13.061 13.939 L7.061 7.939 Z"/>
+    <circle cx="6" cy="9" r="1.5"/>
+    <circle cx="12" cy="15" r="1.5"/>
+    <path d="M13.061 16.061 L19.061 10.061 L16.939 7.939 L10.939 13.939 Z"/>
+    <circle cx="12" cy="15" r="1.5"/>
+    <circle cx="18" cy="9" r="1.5"/>
+  </g>
+</svg>
