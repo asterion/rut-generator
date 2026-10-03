@@ -1,4 +1,4 @@
-/* RUT Empresa: a capsule with three buttons in the panel, and its drop-down menu */
+/* RUT Generator: a capsule with three buttons in the panel, and its drop-down menu */
 
 /* The capsule's own buttons show hover and press, so the panel button does not */
 #panel .panel-button.rut-indicator,
@@ -58,8 +58,9 @@
     font-feature-settings: "tnum";
 }
 
+/* Wide enough for "Company", "Empresa" or "Persona", so the RUTs line up */
 .rut-history-kind {
-    width: 42px;
+    min-width: 4.5em;
     font-size: 0.85em;
 }
 

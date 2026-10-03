@@ -1,11 +1,11 @@
-# French translations for rut-empresa@asterion package.
-# Copyright (C) 2026 THE rut-empresa@asterion'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the rut-empresa@asterion package.
+# French translations for rut-generator@asterion package.
+# Copyright (C) 2026 THE rut-generator@asterion'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the rut-generator@asterion package.
 # Automatically generated, 2026.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: rut-empresa@asterion\n"
+"Project-Id-Version: rut-generator@asterion\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-02 20:55-0300\n"
 "PO-Revision-Date: 2026-10-02 20:20-0300\n"

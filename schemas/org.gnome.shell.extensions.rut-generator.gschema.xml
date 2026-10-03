@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema id="org.gnome.shell.extensions.rut-empresa" path="/org/gnome/shell/extensions/rut-empresa/">
+  <schema id="org.gnome.shell.extensions.rut-generator" path="/org/gnome/shell/extensions/rut-generator/">
     <key name="rut-format" type="s">
       <choices>
         <choice value="dots"/>

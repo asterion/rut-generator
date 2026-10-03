@@ -4,7 +4,7 @@
 // Do NOT upload to extensions.gnome.org (EGO) unless you understand JavaScript
 // and can maintain this code.
 //
-// RUT Empresa: generates random, valid Chilean RUTs for a company or a person and copies them
+// RUT Generator: generates random, valid Chilean RUTs for a company or a person and copies them
 // to the clipboard, with a menu to choose the format and see the history.
 
 import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
@@ -12,7 +12,7 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 import {RutIndicator} from './indicator.js';
 
-export default class RutEmpresaExtension extends Extension {
+export default class RutGeneratorExtension extends Extension {
     enable() {
         this._settings = this.getSettings();
         this._indicator = new RutIndicator(this.metadata.name, this._settings, this.dir.get_child('icons'));

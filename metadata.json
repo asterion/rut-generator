@@ -1,9 +1,10 @@
 {
-  "uuid": "rut-empresa@asterion",
-  "name": "RUT Empresa",
+  "uuid": "rut-generator@asterion",
+  "name": "RUT Generator",
   "description": "Generates random, valid Chilean RUTs for testing and copies them to the clipboard: one button for a company and one for a person. A menu lets you choose the format (with dots, dash only or plain) and copy recent RUTs again. The extension only writes to the clipboard; it never reads it.",
-  "settings-schema": "org.gnome.shell.extensions.rut-empresa",
-  "gettext-domain": "rut-empresa@asterion",
+  "settings-schema": "org.gnome.shell.extensions.rut-generator",
+  "gettext-domain": "rut-generator@asterion",
+  "url": "https://github.com/asterion/rut-generator",
   "version": 1,
   "shell-version": [
     "50"
